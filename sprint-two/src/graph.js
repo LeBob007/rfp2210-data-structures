@@ -42,10 +42,12 @@ Graph.prototype.addEdge = function(fromNode, toNode) {
 // Remove an edge between any two specified (by value) nodes.
 //time complexity: O(n)
 Graph.prototype.removeEdge = function(fromNode, toNode) {
-  var toIndex = this.storage[fromNode].indexOf(toNode);
-  var fromIndex = this.storage[toNode].indexOf(fromNode);
-  this.storage[fromNode].splice(toIndex, 1);
-  this.storage[toNode].splice(fromIndex, 1);
+  if (this.hasEdge(fromNode, toNode)) {
+    var toIndex = this.storage[fromNode].indexOf(toNode);
+    var fromIndex = this.storage[toNode].indexOf(fromNode);
+    this.storage[fromNode].splice(toIndex, 1);
+    this.storage[toNode].splice(fromIndex, 1);
+  }
 };
 
 // Pass in a callback which will be executed on each node of the graph.

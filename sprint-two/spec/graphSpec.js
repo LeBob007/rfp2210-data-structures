@@ -45,6 +45,15 @@ describe('graph', function() {
     expect(graph.hasEdge(4, 5)).to.equal(false);
   });
 
+  it('NEW TEST: should do nothing when trying to remove edge that does not exist', function() {
+    graph.addNode(4);
+    graph.addNode(5);
+    graph.addNode(6);
+    graph.addEdge(4, 6);
+    graph.removeEdge(5, 4);
+    expect(graph.hasEdge(4, 6)).to.equal(true);
+  });
+
   it('should remove edges between nodes when a node is removed', function() {
     graph.addNode(4);
     graph.addNode(5);

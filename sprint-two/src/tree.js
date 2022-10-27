@@ -39,6 +39,15 @@ treeMethods.contains = function(target) {
 };
 
 
+treeMethods.depthFirstLog = function(cb) {
+  this.children.forEach(function (child) {
+    cb.call(this, child.value);
+    if (child.children.length !== 0) {
+      child.depthFirstLog(cb);
+    }
+  });
+};
+
 
 /*
  * Complexity: What is the time complexity of the above functions?
