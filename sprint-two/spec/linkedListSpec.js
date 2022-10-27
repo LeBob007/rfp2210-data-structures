@@ -52,4 +52,15 @@ describe('linkedList', function() {
   });
 
   // add more tests here to test the functionality of linkedList
+  it('should check if next node after head is tail', function() {
+    linkedList.addToTail(4);
+    linkedList.addToTail(5);
+    expect(linkedList.head.next.value).to.equal(5);
+  });
+
+  it('should return null when removeHead is called on an empty linked list', function() {
+    linkedList.addToTail(4);
+    expect(linkedList.removeHead()).to.equal(4);
+    expect(linkedList.removeHead()).to.equal(null);
+  });
 });

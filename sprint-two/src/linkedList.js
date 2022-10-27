@@ -24,6 +24,9 @@ var LinkedList = function() {
 
   //time complexity: O(1)
   list.removeHead = function() {
+    if (this.head === null) {
+      return null;
+    }
     var oldHead = this.head.value;
 
     if (this.head.next === null) {
