@@ -39,11 +39,11 @@ treeMethods.contains = function(target) {
 };
 
 
-treeMethods.depthFirstLog = function(cb) {
+treeMethods.traverse = function(cb) {
   this.children.forEach(function (child) {
     cb.call(this, child.value);
     if (child.children.length !== 0) {
-      child.depthFirstLog(cb);
+      child.traverse(cb);
     }
   });
 };

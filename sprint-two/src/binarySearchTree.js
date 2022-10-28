@@ -65,6 +65,16 @@ bstMethods.depthFirstLog = function(cb) {
   }
 };
 
+bstMethods.removeAllChildren = function(value) {
+  if (this.value === value) {
+    this.left = null;
+    this.right = null;
+  } else if (value > this.value && this.right !== null) {
+    this.right.removeAllChildren(value);
+  } else if (value < this.value && this.left !== null) {
+    this.left.removeAllChildren(value);
+  }
+};
 /*
  * Complexity: What is the time complexity of the above functions?
  */
