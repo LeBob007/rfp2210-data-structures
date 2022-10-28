@@ -65,6 +65,7 @@ bstMethods.depthFirstLog = function(cb) {
   }
 };
 
+//time complexity: O(log(n))
 bstMethods.removeAllChildren = function(value) {
   if (this.value === value) {
     this.left = null;
@@ -74,6 +75,32 @@ bstMethods.removeAllChildren = function(value) {
   } else if (value < this.value && this.left !== null) {
     this.left.removeAllChildren(value);
   }
+};
+
+
+//Create array and temp variable to hold first item
+//While the array is non empty
+//  pop first item and set to temp variable
+//  if children are not null, then push them to the array
+//  call callback on temp variable
+//time complexity: O(n)
+bstMethods.breadthFirstLog = function(cb) {
+  var array = [];
+  var tree;
+
+  array.push(this);
+  while (array.length > 0) {
+    tree = array.shift();
+    if (tree.left !== null) {
+      array.push(tree.left);
+    }
+    if (tree.right !== null) {
+      array.push(tree.right);
+    }
+    cb.call(this, tree.value);
+  }
+
+
 };
 /*
  * Complexity: What is the time complexity of the above functions?
