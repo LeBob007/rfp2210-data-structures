@@ -66,6 +66,7 @@ HashTable.prototype.remove = function(k) {
       bucket.splice(i, 1);
       this.count--;
       if (this.count < this._limit * 0.25) {
+        this.count = 0;
         this._limit = this._limit * 0.5;
         var oldStorage = this._storage;
         this._storage = LimitedArray(this._limit);
