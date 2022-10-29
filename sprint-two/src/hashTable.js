@@ -36,9 +36,6 @@ HashTable.prototype.insert = function(k, v) {
           hash.insert(tuple[0], tuple[1]);
         });
       });
-      this._storage.each(function(element) {
-        console.log(element);
-      });
     }
   }
 

@@ -45,6 +45,7 @@ describe('binarySearchTree', function() {
     binarySearchTree.insert(3);
     binarySearchTree.insert(7);
     binarySearchTree.insert(6);
+    binarySearchTree.balanceTree();
     binarySearchTree.removeAllChildren(2);
     expect(binarySearchTree.contains(3)).to.equal(false);
   });

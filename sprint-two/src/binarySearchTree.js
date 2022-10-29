@@ -3,6 +3,9 @@ var BinarySearchTree = function(value) {
   binarySearchTree.value = value;
   binarySearchTree.left = null;
   binarySearchTree.right = null;
+  binarySearchTree.depth = 0;
+  binarySearchTree.max = 0;
+  binarySearchTree.min = 0;
   return binarySearchTree;
 };
 
@@ -99,9 +102,45 @@ bstMethods.breadthFirstLog = function(cb) {
     }
     cb.call(this, tree.value);
   }
-
-
 };
+
+bstMethods.balanceTree = function() {
+  var nodes = [];
+
+  var helper = function(node) {
+    if (node.left) {
+      helper(node.left);
+    }
+    nodes.push(node.value);
+    if (node.right) {
+      helper(node.right);
+    }
+  };
+
+  helper(this);
+
+  var newRoot = Math.floor(nodes.length / 2);
+  bst = BinarySearchTree(nodes[newRoot]);
+  nodes.splice(newRoot, 1);
+  while (nodes.length > 0) {
+    var temp = nodes.shift();
+    bst.insert(temp);
+  }
+
+  return bst;
+};
+
+bstMethods.branchDepth = function (node) {
+  //base case:
+  if (node === null) {
+    this.max = Math.max(node.left.max, node.right.max) + 1;
+    return;
+  }
+
+  //recursion case:
+  this.branchDepth();
+};
+//node.max = max(node.left.max, node.right.max) + 1
 /*
  * Complexity: What is the time complexity of the above functions?
  */
