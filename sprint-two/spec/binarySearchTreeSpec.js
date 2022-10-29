@@ -45,7 +45,6 @@ describe('binarySearchTree', function() {
     binarySearchTree.insert(3);
     binarySearchTree.insert(7);
     binarySearchTree.insert(6);
-    binarySearchTree.balanceTree();
     binarySearchTree.removeAllChildren(2);
     expect(binarySearchTree.contains(3)).to.equal(false);
   });
@@ -58,5 +57,19 @@ describe('binarySearchTree', function() {
     binarySearchTree.insert(7);
     binarySearchTree.breadthFirstLog(func);
     expect(array).to.eql([5, 2, 7, 3]);
+  });
+
+  it('NEW TEST: should correctly balance an unbalanced tree', function() {
+    binarySearchTree.insert(4);
+    binarySearchTree.insert(3);
+    binarySearchTree.insert(7);
+    binarySearchTree.insert(2);
+    binarySearchTree.insert(1);
+    binarySearchTree.insert(0);
+    expect(binarySearchTree.max).to.equal(6);
+    expect(binarySearchTree.min).to.equal(2);
+    binarySearchTree = binarySearchTree.balanceTree();
+    expect(binarySearchTree.max).to.equal(4);
+    expect(binarySearchTree.min).to.equal(4);
   });
 });

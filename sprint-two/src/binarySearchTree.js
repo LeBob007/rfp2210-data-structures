@@ -32,7 +32,10 @@ bstMethods.insert = function(value) {
       this.left.insert(value);
     }
   }
-
+  this.branchDepth(this);
+  // if (this.max > this.min * 2) {
+  //   this.balanceTree();
+  // }
 
 };
 
@@ -119,6 +122,24 @@ bstMethods.balanceTree = function() {
 
   helper(this);
 
+  //ITERATIVE
+  // var temp = [];
+  // var curr = this;
+
+  // while (curr !== null || temp.length > 0) {
+  //   while (curr !== null) {
+  //     temp.push(curr);
+  //     curr = curr.left;
+  //   }
+  //   var tempNode = temp.pop();
+  //   nodes.push(tempNode.value);
+  //   curr = tempNode.right;
+  // }
+
+
+
+
+
   var newRoot = Math.floor(nodes.length / 2);
   bst = BinarySearchTree(nodes[newRoot]);
   nodes.splice(newRoot, 1);
@@ -132,13 +153,24 @@ bstMethods.balanceTree = function() {
 
 bstMethods.branchDepth = function (node) {
   //base case:
-  if (node === null) {
-    this.max = Math.max(node.left.max, node.right.max) + 1;
-    return;
+  if (node.left === null && node.right === null) {
+    node.max = 1;
+    node.min = 1;
+  } else if (node.left === null) {
+    node.branchDepth(node.right);
+    node.max = node.right.max + 1;
+    node.min = 1;
+  } else if (node.right === null) {
+    node.branchDepth(node.left);
+    node.max = node.left.max + 1;
+    node.min = 1;
+  } else {
+    node.branchDepth(node.left);
+    node.branchDepth(node.right);
+    node.max = Math.max(node.left.max, node.right.max) + 1;
+    node.min = Math.min(node.left.max, node.right.max) + 1;
   }
 
-  //recursion case:
-  this.branchDepth();
 };
 //node.max = max(node.left.max, node.right.max) + 1
 /*
