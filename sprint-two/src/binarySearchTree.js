@@ -136,10 +136,6 @@ bstMethods.balanceTree = function() {
   //   curr = tempNode.right;
   // }
 
-
-
-
-
   var newRoot = Math.floor(nodes.length / 2);
   bst = BinarySearchTree(nodes[newRoot]);
   nodes.splice(newRoot, 1);
