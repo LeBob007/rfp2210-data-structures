@@ -11,8 +11,8 @@ var Set = function() {
 
 var setPrototype = {};
 
-//time complexity: O(n)
-//new time complexity: O(1)
+//old time complexity: O(1)
+//new time complexity: O(n)
 setPrototype.add = function(item) {
   // console.log(item);
   // if (this._storage[(typeof item)][item] === undefined) {
@@ -24,14 +24,14 @@ setPrototype.add = function(item) {
   }
 };
 
-//time complexity: O(n)
-//new time complexity: O(1)
+//old time complexity: O(1)
+//new time complexity: O(n)
 setPrototype.contains = function(item) {
   return this._storage.includes(item);
 };
 
-//time complexity: O(n)
-//new time complexity: O(1)
+//old time complexity: O(1)
+//new time complexity: O(n)
 setPrototype.remove = function(item) {
   // if (this._storage[(typeof item)][item] !== undefined) {
   //   delete this._storage[(typeof item)][item];

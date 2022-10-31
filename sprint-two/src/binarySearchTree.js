@@ -31,6 +31,8 @@ bstMethods.insert = function(value) {
     } else {
       this.left.insert(value);
     }
+  } else {
+    // do nothing if already in the tree
   }
   this.branchDepth(this);
   // if (this.max > this.min * 2) {

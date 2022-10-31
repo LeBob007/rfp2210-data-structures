@@ -13,32 +13,32 @@ var LinkedList = function() {
   list.addToTail = function(value) {
     var nodeToAdd = Node(value);
 
-    if (this.head === null) {
-      this.head = nodeToAdd;
-      this.tail = nodeToAdd;
+    if (list.head === null) {
+      list.head = nodeToAdd;
+      list.tail = nodeToAdd;
     } else {
-      this.tail.next = nodeToAdd;
-      this.tail = nodeToAdd;
+      list.tail.next = nodeToAdd;
+      list.tail = nodeToAdd;
     }
   };
 
   //time complexity: O(1)
   list.removeHead = function() {
-    if (this.head === null) {
+    if (list.head === null) {
       return null;
     }
-    var oldHead = this.head.value;
+    var oldHead = list.head.value;
 
-    if (this.head.next === null) {
-      this.tail = this.tail.next;
+    if (list.head.next === null) {
+      list.tail = list.tail.next;
     }
-    this.head = this.head.next;
+    list.head = list.head.next;
     return oldHead;
   };
 
   //time complexity O(n)
   list.contains = function(target) {
-    var currentNode = this.head;
+    var currentNode = list.head;
     while (currentNode !== null) {
       if (currentNode.value === target) {
         return true;
